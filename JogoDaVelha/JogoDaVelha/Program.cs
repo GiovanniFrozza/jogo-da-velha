@@ -6,7 +6,8 @@ namespace JogoDaVelha
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            JogoDaVelha jogoDaVelha = new JogoDaVelha();
+            jogoDaVelha.Iniciar();
         }
     }
 }
