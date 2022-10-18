@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace JogoDaVelha
 {
@@ -7,7 +6,7 @@ namespace JogoDaVelha
     {
         private bool fimDeJogo;
         private char[] posicoes;
-        private char vez;//jogadorAtual
+        private char vez;
         private int quantidadePreenchida;//quantidade de jogadas
 
         public JogoDaVelha()
@@ -109,12 +108,12 @@ namespace JogoDaVelha
         {
             int indice = posicaoEscolhida - 1;
 
-            if(posicoes[indice] == 'O' || posicaoEscolhida == 'X') {
+            if (posicoes[indice] == 'O' || posicaoEscolhida == 'X')
+            {
                 return false;
-            } 
-            return true;
+            }
 
-            //return posicoes[indice] != 'O' && posicaoEscolhida != 'X';
+            return true;
         }
 
         private void RenderizarTabela()
@@ -125,9 +124,9 @@ namespace JogoDaVelha
 
         private string ObterTabela()
         {
-            return $"__{posicoes[0]}__|__{posicoes[1]}__|__{posicoes[2]}__" +
-                   $"__{posicoes[3]}__|__{posicoes[4]}__|__{posicoes[5]}__" +
-                   $"  {posicoes[6]}  |  {posicoes[7]}  |  {posicoes[8]}  ";
+            return $"__{posicoes[0]}__|__{posicoes[1]}__|__{posicoes[2]}__\n" +
+                   $"__{posicoes[3]}__|__{posicoes[4]}__|__{posicoes[5]}__\n" +
+                   $"  {posicoes[6]}  |  {posicoes[7]}  |  {posicoes[8]}  \n\n";
         }
     }
 }

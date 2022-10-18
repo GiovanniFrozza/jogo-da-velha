@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace JogoDaVelha
+﻿namespace JogoDaVelha
 {
     class Program
     {
