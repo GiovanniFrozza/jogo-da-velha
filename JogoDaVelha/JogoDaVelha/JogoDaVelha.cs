@@ -83,7 +83,7 @@ namespace JogoDaVelha
 
         private void LerEscolhaDoUsuario()
         {
-            Console.WriteLine($"Agora é a vez de {vez}, digite uma posição de 1 a 9 que esteja na tabela.");
+            Console.WriteLine($"{VerificaJogadorAtual()}, escolha um número de 1 a 9, que esteja disponível na tabela.\nAo escolher, ele será substituído por {vez}.");
 
             bool conversao = int.TryParse(Console.ReadLine(), out int posicaoEscolhida);
 
@@ -120,6 +120,18 @@ namespace JogoDaVelha
         {
             Console.Clear();
             Console.WriteLine(ObterTabela());
+        }
+
+        private string VerificaJogadorAtual()
+        {
+            if (vez == 'X')
+            {
+                return "Jogador 1";
+            }
+            else
+            {
+                return "Jogador 2";
+            }
         }
 
         private string ObterTabela()
