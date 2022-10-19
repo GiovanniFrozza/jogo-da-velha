@@ -75,14 +75,21 @@ namespace JogoDaVelha
 
         private static void Voltar()
         {
-            if (Convert.ToInt32(Console.ReadLine()) == 9)
+            bool continua = true;
+            int desejaVoltar = Convert.ToInt32(Console.ReadLine());
+
+            while (continua)
             {
-                Console.Clear();
-                Menu();
-            }
-            else
-            {
-                Console.WriteLine("Opção inválida. Digite 9 para voltar.");
+                if (desejaVoltar == 9)
+                {
+                    Console.Clear();
+                    Menu();
+                }
+                else
+                {
+                    Console.WriteLine("Opção inválida. Digite 9 para voltar.");
+                    desejaVoltar = Convert.ToInt32(Console.ReadLine());
+                }
             }
         }
     }
