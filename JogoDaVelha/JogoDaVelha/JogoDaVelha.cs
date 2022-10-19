@@ -110,10 +110,16 @@ namespace JogoDaVelha
         {
             int indice = posicaoEscolhida - 1;
 
+            if (posicaoEscolhida > 9)
+            {
+                return false;
+            }
+
             if (posicoes[indice] == 'O' || posicoes[indice] == 'X')
             {
                 return false;
             }
+
 
             return true;
         }
