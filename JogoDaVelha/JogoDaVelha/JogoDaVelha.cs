@@ -27,7 +27,7 @@ namespace JogoDaVelha
                 RenderizarTabela();
                 LerEscolhaDoUsuario();
                 RenderizarTabela();
-                VerificarFimDeJogo();
+                VerificaFimDeJogo();
                 MudarVez();
             }
         }
@@ -37,29 +37,29 @@ namespace JogoDaVelha
             vez = vez == 'X' ? 'O' : 'X';
         }
 
-        private void VerificarFimDeJogo()
+        private void VerificaFimDeJogo()
         {
             if(quantidadePreenchida < 5)
             {
                 return;
             }
 
-            if(ExisteVitoriaHorizontal() || ExisteVitoriaVertical() || ExisteVitoriaDiagonal())
+            if(VitoriaNaHorizontal() || VitoriaNaVertical() || VitoriaNaDiagonal())
             {
                 fimDeJogo = true;
-                Console.WriteLine($"Fim de jogo! Vitória de {vez}");
+                Console.WriteLine($"Fim de jogo! Vitória de {vez}\n");
                 return;
             }
 
             if(quantidadePreenchida is 9)
             {
                 fimDeJogo = true;
-                Console.WriteLine("Fim de jogo! Empate");
+                Console.WriteLine("Fim de jogo! Empate\n");
                 return;
             }
         }
 
-        private bool ExisteVitoriaHorizontal()
+        private bool VitoriaNaHorizontal()
         {
             bool linha1 = posicoes[0] == posicoes[1] && posicoes[0] == posicoes[2];
             bool linha2 = posicoes[3] == posicoes[4] && posicoes[3] == posicoes[5];
@@ -67,7 +67,7 @@ namespace JogoDaVelha
 
             return linha1 || linha2 || linha3;
         }
-        private bool ExisteVitoriaVertical()
+        private bool VitoriaNaVertical()
         {
             bool linha1 = posicoes[0] == posicoes[3] && posicoes[0] == posicoes[6];
             bool linha2 = posicoes[1] == posicoes[4] && posicoes[1] == posicoes[7];
@@ -75,7 +75,7 @@ namespace JogoDaVelha
 
             return linha1 || linha2 || linha3;
         }
-        private bool ExisteVitoriaDiagonal()
+        private bool VitoriaNaDiagonal()
         {
             bool linha1 = posicoes[2] == posicoes[4] && posicoes[2] == posicoes[6];
             bool linha2 = posicoes[0] == posicoes[4] && posicoes[0] == posicoes[8];
@@ -83,12 +83,13 @@ namespace JogoDaVelha
             return linha1 || linha2;
         }
 
-
         private void LerEscolhaDoUsuario()
         {
             Console.WriteLine($"{VerificaJogadorAtual()}, escolha um número de 1 a 9, que esteja disponível na tabela.\nAo escolher, ele será substituído por {vez}.");
 
             bool conversao = int.TryParse(Console.ReadLine(), out int posicaoEscolhida);
+
+            
 
             while (!conversao || !ValidarEscolhaUsuario(posicaoEscolhida))
             {

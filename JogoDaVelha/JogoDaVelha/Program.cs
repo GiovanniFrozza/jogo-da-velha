@@ -12,9 +12,9 @@ namespace JogoDaVelha
         {
             Console.WriteLine("Ola jogadores\n");
             Opcoes();
-            string opcao = Console.ReadLine();
+            string opcaoSelecionada = Console.ReadLine();
 
-            switch (opcao)
+            switch (opcaoSelecionada)
             {
                 case "1":
                     JogoDaVelha jogoDaVelha = new JogoDaVelha();
@@ -97,9 +97,10 @@ namespace JogoDaVelha
         {
             bool continuarJogando = true;
 
+            Console.WriteLine("Deseja continuar jogando?\nS para sim.\nN para não.");
+
             while (continuarJogando)
             {
-                Console.WriteLine("Deseja continuar jogando?\nS para sim.\nN para não.");
                 string continuar = Console.ReadLine().ToUpper();
 
                 if (continuar == "S" || continuar == "N")
