@@ -7,12 +7,15 @@ namespace JogoDaVelha
         private bool fimDeJogo;
         private char[] posicoes;
         private char vez;
-        private int quantidadePreenchida;//quantidade de jogadas
+        private int quantidadePreenchida;
 
         public JogoDaVelha()
         {
             fimDeJogo = false;
-            posicoes = new[] {'1','2','3','4','5','6','7','8','9'};
+            posicoes = new[] {
+                '1','2','3',
+                '4','5','6',
+                '7','8','9'};
             vez = 'X';
             quantidadePreenchida = 0;
         }

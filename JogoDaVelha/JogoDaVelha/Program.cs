@@ -8,26 +8,25 @@ namespace JogoDaVelha
         {
             Menu();
         }
-
         private static void Menu()
         {
             Console.WriteLine("Ola jogadores\n");
             Opcoes();
-            int opcao = Convert.ToInt32(Console.ReadLine());
+            string opcao = Console.ReadLine();
 
             switch (opcao)
             {
-                case 1:
+                case "1":
                     JogoDaVelha jogoDaVelha = new JogoDaVelha();
                     jogoDaVelha.Iniciar();
                     break;
-                case 2:
+                case "2":
                     RegrasDoJogo();
                     break;
-                case 3:
+                case "3":
                     Sobre();
                     break;
-                case 4:
+                case "4":
                     Console.WriteLine("Saindo...");
                     Environment.Exit(1);
                     break;
@@ -35,6 +34,7 @@ namespace JogoDaVelha
                     Console.WriteLine("Você digitou um valor inválido, tente novamente.");
                     break;
             }
+            JogarNovamente();
         }
 
         private static void Opcoes()
@@ -43,7 +43,7 @@ namespace JogoDaVelha
             Console.WriteLine("2 - Regras do jogo.");
             Console.WriteLine("3 - História do jogo.");
             Console.WriteLine("4 - Sair.");
-            Console.WriteLine("\nDigite uma opção.");
+            Console.WriteLine("\nDigite uma opção e aperte enter.");
         }
 
         private static void RegrasDoJogo()
@@ -76,11 +76,11 @@ namespace JogoDaVelha
         private static void Voltar()
         {
             bool continua = true;
-            int desejaVoltar = Convert.ToInt32(Console.ReadLine());
+            string desejaVoltar = Console.ReadLine();
 
             while (continua)
             {
-                if (desejaVoltar == 9)
+                if (desejaVoltar == "9")
                 {
                     Console.Clear();
                     Menu();
@@ -88,8 +88,39 @@ namespace JogoDaVelha
                 else
                 {
                     Console.WriteLine("Opção inválida. Digite 9 para voltar.");
-                    desejaVoltar = Convert.ToInt32(Console.ReadLine());
+                    desejaVoltar = Console.ReadLine();
                 }
+            }
+        }
+
+        private static void JogarNovamente()
+        {
+            bool continuarJogando = true;
+
+            while (continuarJogando)
+            {
+                Console.WriteLine("Deseja continuar jogando?\nS para sim.\nN para não.");
+                string continuar = Console.ReadLine().ToUpper();
+
+                if (continuar == "S" || continuar == "N")
+                {
+                    if (continuar == "S")
+                    {
+                        Console.Clear();
+                        Menu();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Obrigado por jogar nosso jogo.\n" +
+                            "Saindo...");
+                        Environment.Exit(1);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Opção invalida. Digite S para sim e N para não.");
+                }
+
             }
         }
     }
