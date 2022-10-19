@@ -7,7 +7,7 @@ namespace JogoDaVelha
         private bool terminaOJogo;
         private char[] posicoes;
         private char vez;
-        private int quantidadePreenchida;
+        private int quantidadeDeJogadas;
 
         public JogoDaVelha()
         {
@@ -17,7 +17,7 @@ namespace JogoDaVelha
                 '4','5','6',
                 '7','8','9'};
             vez = 'X';
-            quantidadePreenchida = 0;
+            quantidadeDeJogadas = 0;
         }
 
         public void Iniciar()
@@ -32,31 +32,69 @@ namespace JogoDaVelha
             }
         }
 
-        private void MudarVez()
+        private void RenderizarTabela()
         {
-            vez = vez == 'X' ? 'O' : 'X';
+            Console.Clear();
+            Console.WriteLine(ObterTabela());
+        }
+
+        private void LerEscolhaDoUsuario()
+        {
+            Console.WriteLine($"{VerificaJogadorAtual()}, escolha um número de 1 a 9, que esteja disponível na tabela.\nAo escolher, ele será substituído por {vez}.");
+
+            bool conversao = int.TryParse(Console.ReadLine(), out int posicaoEscolhida);
+
+            while (!conversao || !ValidarEscolhaUsuario(posicaoEscolhida))
+            {
+                Console.WriteLine("O campo escolhido é invalido, por favor digite um numero entre 1 e 9 que esteja disponivel na tabela.");
+                conversao = int.TryParse(Console.ReadLine(), out posicaoEscolhida);
+            }
+
+            PreencherEscolha(posicaoEscolhida);
+        }
+
+        private bool ValidarEscolhaUsuario(int posicaoEscolhida)
+        {
+            int indice = posicaoEscolhida - 1;
+
+            if (posicaoEscolhida > 9)
+            {
+                return false;
+            }
+
+            if (posicoes[indice] == 'O' || posicoes[indice] == 'X')
+            {
+                return false;
+            }
+
+            return true;
         }
 
         private void VerificaFimDeJogo()
         {
-            if(quantidadePreenchida < 5)
+            if (quantidadeDeJogadas < 5)
             {
                 return;
             }
 
-            if(VitoriaNaHorizontal() || VitoriaNaVertical() || VitoriaNaDiagonal())
+            if (VitoriaNaHorizontal() || VitoriaNaVertical() || VitoriaNaDiagonal())
             {
                 terminaOJogo = true;
                 Console.WriteLine($"Fim de jogo! Vitória de {vez}\n");
                 return;
             }
 
-            if(quantidadePreenchida is 9)
+            if (quantidadeDeJogadas is 9)
             {
                 terminaOJogo = true;
                 Console.WriteLine("Fim de jogo! Empate\n");
                 return;
             }
+        }
+
+        private void MudarVez()
+        {
+            vez = vez == 'X' ? 'O' : 'X';
         }
 
         private bool VitoriaNaHorizontal()
@@ -83,51 +121,12 @@ namespace JogoDaVelha
             return linha1 || linha2;
         }
 
-        private void LerEscolhaDoUsuario()
-        {
-            Console.WriteLine($"{VerificaJogadorAtual()}, escolha um número de 1 a 9, que esteja disponível na tabela.\nAo escolher, ele será substituído por {vez}.");
-
-            bool conversao = int.TryParse(Console.ReadLine(), out int posicaoEscolhida);
-
-            while (!conversao || !ValidarEscolhaUsuario(posicaoEscolhida))
-            {
-                Console.WriteLine("O campo escolhido é invalido, por favor digite um numero entre 1 e 9 que esteja disponivel na tabela.");
-                conversao = int.TryParse(Console.ReadLine(), out posicaoEscolhida);
-            }
-
-            PreencherEscolha(posicaoEscolhida);
-        }
-
         private void PreencherEscolha(int posicaoEscolhida)
         {
             int indice = posicaoEscolhida - 1;
 
             posicoes[indice] = vez;
-            quantidadePreenchida++;
-        }
-
-        private bool ValidarEscolhaUsuario(int posicaoEscolhida)
-        {
-            int indice = posicaoEscolhida - 1;
-
-            if (posicaoEscolhida > 9)
-            {
-                return false;
-            }
-
-            if (posicoes[indice] == 'O' || posicoes[indice] == 'X')
-            {
-                return false;
-            }
-
-
-            return true;
-        }
-
-        private void RenderizarTabela()
-        {
-            Console.Clear();
-            Console.WriteLine(ObterTabela());
+            quantidadeDeJogadas++;
         }
 
         private string VerificaJogadorAtual()
