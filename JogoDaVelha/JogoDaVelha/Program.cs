@@ -87,6 +87,7 @@ namespace JogoDaVelha
         {
             Console.Clear();
 
+            Console.WriteLine("\n HISTÓRIA DO JOGO.\n");
             Console.WriteLine("Por que o jogo da velha tem esse nome?\n" +
                 "No século 19, era comum as senhoras se reunirem para jogar noughts and crosses (zeros e cruzes)\n" +
                 "enquanto bordavam e conversavam. Foi assim que o passatempo virou “jogo das velhas” e depois simplificado\n" +
