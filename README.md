@@ -1,9 +1,13 @@
 # Como jogar o Jogo da Velha
+  ### Requisitos
+  <ul>
+    <li>Versão: .NET 5.0</li>
+  </ul>
 
-  ### Instalação
+  ### Instalação 
   <ul>
     <li>Para instalar o jogo da velha você precisa clonar o projeto.</li>
-    <li>Para iniciar, é necessário abrir o código e rodá-lo.</li>
+    <li>Para iniciar a aplicação basta entrar na pasta "Executavel" e executar o arquivo "JogoDaVelha.exe".</li>
   </ul>
   
   ### Como jogar
