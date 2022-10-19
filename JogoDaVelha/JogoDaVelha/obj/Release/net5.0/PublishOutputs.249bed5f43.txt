@@ -1,0 +1,5 @@
+C:\Users\giovanni.frozza\Desktop\jogoDaVelha\Executavel\JogoDaVelha.exe
+C:\Users\giovanni.frozza\Desktop\jogoDaVelha\Executavel\JogoDaVelha.dll
+C:\Users\giovanni.frozza\Desktop\jogoDaVelha\Executavel\JogoDaVelha.deps.json
+C:\Users\giovanni.frozza\Desktop\jogoDaVelha\Executavel\JogoDaVelha.runtimeconfig.json
+C:\Users\giovanni.frozza\Desktop\jogoDaVelha\Executavel\JogoDaVelha.pdb

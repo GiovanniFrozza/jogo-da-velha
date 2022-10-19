@@ -89,8 +89,6 @@ namespace JogoDaVelha
 
             bool conversao = int.TryParse(Console.ReadLine(), out int posicaoEscolhida);
 
-            
-
             while (!conversao || !ValidarEscolhaUsuario(posicaoEscolhida))
             {
                 Console.WriteLine("O campo escolhido é invalido, por favor digite um numero entre 1 e 9 que esteja disponivel na tabela.");
@@ -112,7 +110,7 @@ namespace JogoDaVelha
         {
             int indice = posicaoEscolhida - 1;
 
-            if (posicoes[indice] == 'O' || posicaoEscolhida == 'X')
+            if (posicoes[indice] == 'O' || posicoes[indice] == 'X')
             {
                 return false;
             }
