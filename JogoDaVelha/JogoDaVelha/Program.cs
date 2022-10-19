@@ -8,12 +8,13 @@ namespace JogoDaVelha
         {
             Menu();
         }
+
         private static void Menu()
         {
             Console.WriteLine("Ola jogadores\n");
             Opcoes();
-            string opcaoSelecionada = Console.ReadLine();
-
+            string opcaoSelecionada = ValidaOpcao();
+                
             switch (opcaoSelecionada)
             {
                 case "1":
@@ -35,6 +36,28 @@ namespace JogoDaVelha
                     break;
             }
             JogarNovamente();
+        }
+
+        private static string ValidaOpcao()
+        {
+            string opcao = Console.ReadLine();
+
+            bool opcaoCorreta = true;
+
+            while(opcaoCorreta)
+            {
+                if(opcao == "1" || opcao == "2" || opcao == "3" || opcao == "4")
+                {
+                    opcaoCorreta = false;
+                }
+                else
+                {
+                    Console.WriteLine("Você digitou um valor inválido, tente novamente.");
+                    opcao = Console.ReadLine();
+                }
+            }
+
+            return opcao;
         }
 
         private static void Opcoes()

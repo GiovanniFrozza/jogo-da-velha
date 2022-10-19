@@ -4,14 +4,14 @@ namespace JogoDaVelha
 {
     class JogoDaVelha
     {
-        private bool fimDeJogo;
+        private bool terminaOJogo;
         private char[] posicoes;
         private char vez;
         private int quantidadePreenchida;
 
         public JogoDaVelha()
         {
-            fimDeJogo = false;
+            terminaOJogo = false;
             posicoes = new[] {
                 '1','2','3',
                 '4','5','6',
@@ -22,7 +22,7 @@ namespace JogoDaVelha
 
         public void Iniciar()
         {
-            while(!fimDeJogo)
+            while(!terminaOJogo)
             {
                 RenderizarTabela();
                 LerEscolhaDoUsuario();
@@ -46,14 +46,14 @@ namespace JogoDaVelha
 
             if(VitoriaNaHorizontal() || VitoriaNaVertical() || VitoriaNaDiagonal())
             {
-                fimDeJogo = true;
+                terminaOJogo = true;
                 Console.WriteLine($"Fim de jogo! Vitória de {vez}\n");
                 return;
             }
 
             if(quantidadePreenchida is 9)
             {
-                fimDeJogo = true;
+                terminaOJogo = true;
                 Console.WriteLine("Fim de jogo! Empate\n");
                 return;
             }
